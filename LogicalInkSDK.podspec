@@ -6,10 +6,7 @@ Pod::Spec.new do |s|
                    A longer description of LogicalInkSDK.
                    DESC
   s.homepage     = "https://github.com/firofame/LogicalInkSDK"
-  s.license      = { :type => "MIT", :text => <<-LICENSE
-                   Copyright (c) 2023 Firoz Ahmed
-                   LICENSE
-                 }
+  s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Firoz Ahmed" => "firofame@gmail.com" }
   s.source       = { :http => "https://github.com/firofame/LogicalInkSDK/releases/download/7.6.6.4/LogicalInkSDK.zip" }
   s.platform     = :ios, "13.0"
