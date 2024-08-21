@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "LogicalInkSDK"
   s.version      = "7.6.6.4"
-  s.summary      = "A short description of LogicalInkSDK."
+  s.summary      = "LogicalInkSDK is used to view forms from eCapture."
   s.description  = <<-DESC
                    A longer description of LogicalInkSDK.
                    DESC
