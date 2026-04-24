@@ -1,0 +1,2199 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.3 effective-5.10 (swiftlang-6.3.0.123.5 clang-2100.0.123.102)
+// swift-module-flags: -target x86_64-apple-ios17.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name LogicalInkSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3
+import AVFoundation
+import AVKit
+import Combine
+import CoreGraphics
+import Foundation
+import JavaScriptCore
+@_exported import LogicalInkSDK
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class AttributedLabel : UIKit.UIView {
+  public enum ContentAlignment : Swift.Int {
+    case center
+    case top
+    case bottom
+    case left
+    case right
+    case topLeft
+    case topRight
+    case bottomLeft
+    case bottomRight
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor @preconcurrency open var numberOfLines: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var contentAlignment: LogicalInkSDK.AttributedLabel.ContentAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var padding: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var font: UIKit.UIFont {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var lineBreakMode: UIKit.NSLineBreakMode {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var textColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var paragraphStyle: UIKit.NSParagraphStyle? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var shadow: UIKit.NSShadow? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var attributedText: Foundation.NSAttributedString? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var text: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func setNeedsDisplay()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func sizeThatFits(_ size: CoreFoundation.CGSize) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func sizeToFit()
+  @objc deinit
+}
+extension CoreGraphics.CGPath {
+  open func getPathElementsPoints() -> [CoreFoundation.CGPoint]
+}
+public protocol FocusEventsProtocols {
+  func focusIn()
+  func focusOut()
+  func spaceKeyPressed()
+}
+public protocol FocusUIProtocols {
+  func addFocusLayer()
+  func removeFocusLayer()
+}
+public protocol LIAlertViewControllerDelegate : AnyObject {
+  func jumpToPage(_ pageNumber: Swift.Int, formModel: LogicalInkSDK.LIFormModel)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class LIFormValidationCell : UIKit.UITableViewCell {
+  @available(iOS 3.0, *)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public enum LIAlertType {
+  case eSaveType
+  case eLockType
+  case eCancelType
+  case eLogFileType
+  case eListType
+  case eListSaveType
+  case ePrintType
+  case eUnknown
+  public static func == (a: LogicalInkSDK.LIAlertType, b: LogicalInkSDK.LIAlertType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class LIAlertViewController : UIKit.UIViewController, UIKit.UITableViewDelegate, UIKit.UITableViewDataSource, UIKit.UITextFieldDelegate {
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var discardChangesNoButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var discardChangesYesButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var titleLabel: UIKit.UILabel!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var statusImageView: UIKit.UIImageView!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var statusNameLabel: UIKit.UILabel!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var statusTextView: UIKit.UITextView!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var listTableView: UIKit.UITableView!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var pinCloseButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var pinClearButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var pinForgotButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var pinAcceptButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var pin1TextField: UIKit.UITextField!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var pin2TextField: UIKit.UITextField!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var pin3TextField: UIKit.UITextField!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var pin4TextField: UIKit.UITextField!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var errorLabel: UIKit.UILabel!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var printButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var cancelButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var selectAllButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var clearAllButton: UIKit.UIButton!
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak public var selectPrinterButton: UIKit.UIButton!
+  @_Concurrency.MainActor @preconcurrency public var formErrorArray: [LogicalInkSDK.LIValidationError]?
+  @_Concurrency.MainActor @preconcurrency public var selForms: [LogicalInkSDK.LIFormModel]?
+  @_Concurrency.MainActor @preconcurrency public var printListForms: Foundation.NSMutableSet
+  @_Concurrency.MainActor @preconcurrency public var selectedPrinter: UIKit.UIPrinter?
+  @_Concurrency.MainActor @preconcurrency public var formInfoArray: [[Swift.String : [LogicalInkSDK.LIValidationError]]]
+  @_Concurrency.MainActor @preconcurrency public var alertType: LogicalInkSDK.LIAlertType
+  @_Concurrency.MainActor @preconcurrency public var statusName: Swift.String
+  @_Concurrency.MainActor @preconcurrency public var formToJumpTo: LogicalInkSDK.LIFormModel!
+  @_Concurrency.MainActor @preconcurrency public var pageToJumpTo: Swift.Int
+  @_Concurrency.MainActor @preconcurrency weak public var delegate: (any LogicalInkSDK.LIAlertViewControllerDelegate)?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @objc deinit
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didReceiveMemoryWarning()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillLayoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: UIKit.UITableView, indentationLevelForRowAt indexPath: Foundation.IndexPath) -> Swift.Int
+  @_Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: UIKit.UITableView, titleForHeaderInSection section: Swift.Int) -> Swift.String?
+  @_Concurrency.MainActor @preconcurrency @objc public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: UIKit.UITableView, willDisplayHeaderView view: UIKit.UIView, forSection section: Swift.Int)
+  @_Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: UIKit.UITableView, heightForRowAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@objc @_inheritsConvenienceInitializers public class TextBalloon : ObjectiveC.NSObject {
+  @objc dynamic public class func drawTopRight(frame: CoreFoundation.CGRect = CGRect(x: 33, y: 12, width: 142, height: 106)) -> UIKit.UIBezierPath
+  @objc dynamic public class func drawTopLeft(frame: CoreFoundation.CGRect = CGRect(x: 33, y: 12, width: 142, height: 106)) -> UIKit.UIBezierPath
+  @objc dynamic public class func drawBottomRight(frame: CoreFoundation.CGRect = CGRect(x: 33, y: 12, width: 142, height: 106)) -> UIKit.UIBezierPath
+  @objc dynamic public class func drawBottomLeft(frame: CoreFoundation.CGRect = CGRect(x: 33, y: 12, width: 142, height: 106)) -> UIKit.UIBezierPath
+  @objc override dynamic public init()
+  @objc deinit
+}
+public typealias LICompletionBlockType = (_ result: Swift.AnyObject?, _ success: Swift.Bool) -> Swift.Void
+@_hasMissingDesignatedInitializers public class LIDataFieldService {
+  @objc deinit
+}
+extension UIKit.UICollectionView {
+  @_Concurrency.MainActor @preconcurrency public func previousIndexPath(currentIndexPath: Foundation.IndexPath, in collectionView: UIKit.UICollectionView) -> Foundation.IndexPath?
+  @_Concurrency.MainActor @preconcurrency public func nextIndexPath(for currentIndexPath: Foundation.IndexPath, in collectionView: UIKit.UICollectionView) -> Foundation.IndexPath?
+}
+@objc public protocol EventJSExports : JavaScriptCore.JSExport {
+  @objc var eventType: Swift.String { get set }
+  @objc var control: Swift.String { get set }
+  @objc var valueString: Swift.String { get set }
+  @objc var suffix: Swift.String { get set }
+  @objc var value: Any { get set }
+  @objc static func createEventFor(eventType: Swift.String, control: Swift.String, valueString: Swift.String, suffix: Swift.String, value: Any) -> LogicalInkSDK.LIEvent
+}
+@_hasMissingDesignatedInitializers @objc public class LIEvent : ObjectiveC.NSObject, LogicalInkSDK.EventJSExports {
+  @objc dynamic public var eventType: Swift.String
+  @objc dynamic public var control: Swift.String
+  @objc dynamic public var valueString: Swift.String
+  @objc dynamic public var suffix: Swift.String
+  @objc dynamic public var value: Any
+  public class func createEventFor(eventType: Swift.String, control: Swift.String, valueString: Swift.String) -> LogicalInkSDK.LIEvent
+  @objc public class func createEventFor(eventType: Swift.String, control: Swift.String, valueString: Swift.String, suffix: Swift.String, value: Any) -> LogicalInkSDK.LIEvent
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class LIForm : ObjectiveC.NSObject {
+  public var pages: [LogicalInkSDK.LIPage]
+  public func reset()
+  public func numberOfpages() -> Swift.Int
+  public func isSaveInProgress() -> Swift.Bool
+  public var saveInProgress: Swift.Bool
+  @objc public func saveForm(_ packetID: Swift.Int, isAutoSave: Swift.Bool = false, completion: @escaping LogicalInkSDK.LICompletionBlockType) -> Swift.Bool
+  public func amendForm()
+  public func appTimeout()
+  public func removeSealedOverlays()
+  public func addSealedOverlays()
+  public func getInstanceDataFor(_ formElementName: Swift.String) -> Swift.String?
+  public func scrollToPage(_ pageName: Swift.String)
+  public func scrollToPageNum(_ pageNum: Swift.Int)
+  public func toggleFormElementVisiblity(_ formElementName: Swift.String)
+  public func includePageInFormFill(_ pageName: Swift.String, _ isInitialFormLoad: Swift.Bool = false)
+  public func excludePageFromFormFill(_ pageName: Swift.String, _ isInitialFormLoad: Swift.Bool = false)
+  public func includePageInDestination(_ pageName: Swift.String, _ isInitialFormLoad: Swift.Bool = false)
+  public func excludePageFromDestination(_ pageName: Swift.String, _ isInitialFormLoad: Swift.Bool = false)
+  public func repopulateForms(_ pageIndex: Swift.Int, isForExclude: Swift.Bool = false, isInitialFormLoad: Swift.Bool = false)
+  public func setInstanceDataForPageIncludeExclude()
+  public func notifyValidationChange()
+  public func formElementDidChange(formElement: LogicalInkSDK.LIFormElement)
+  public func startAutoSaveTimerIfNeeded()
+  @objc public func autoSaveForm()
+  public func populatePageInfoForErrors()
+  public func removeValidationForPrinting()
+  public func restoreValidationAfterPrinting()
+  public func validate(notify: Swift.Bool)
+  public func updateValidationRules()
+  public func processGlobalExpressions(expression: LogicalInkSDK.LIExpression?)
+  public func processFormValidationChangedExpression(expression: LogicalInkSDK.LIExpression?)
+  public func processEventExpression(formElement: LogicalInkSDK.LIFormElement?, specificExpression: LogicalInkSDK.LIExpression?, _ isInitialFormLoad: Swift.Bool = false)
+  public func setControlEnabled(controlName: Swift.String, enabled: Swift.Bool)
+  public func setControlVisibility(controlName: Swift.String, visible: Swift.Bool)
+  public func setLayerEnabled(layerName: Swift.String, enabled: Swift.Bool)
+  public func setLayerVisibility(layerName: Swift.String, visible: Swift.Bool)
+  public func setControlValue(controlName: Swift.String, valueString: Swift.String, suffix: Swift.String?, value: Any)
+  public func setTextColor(controlName: Swift.String, hex: Swift.String)
+  public func setBorderColor(controlName: Swift.String, hex: Swift.String)
+  public func displayMessageBox(caption: Swift.String, message: Swift.String)
+  public func launchUrl(urlString: Swift.String)
+  public func upDateFormStatusForJavascript()
+  public func saveProcedureNotes(procedureName: Swift.String, userName: Swift.String, notes: Swift.String)
+  public func speak(text: Swift.String, languageCode: Swift.String, callback: Swift.String)
+  public func populatePages(initFrame: CoreFoundation.CGRect = CGRect.zero)
+  public func includedPages() -> [LogicalInkSDK.LIPage]
+  public func populateRecallArray()
+  public func setUpValidation()
+  public func didAppear(_ index: Swift.Int)
+  public func resizeForParentBounds(_ pBounds: CoreFoundation.CGRect)
+  @objc deinit
+}
+extension LogicalInkSDK.LIForm : AVFAudio.AVSpeechSynthesizerDelegate {
+  @objc dynamic public func speechSynthesizer(_ synthesizer: AVFAudio.AVSpeechSynthesizer, didFinish utterance: AVFAudio.AVSpeechUtterance)
+  @objc dynamic public func speechSynthesizer(_ synthesizer: AVFAudio.AVSpeechSynthesizer, didCancel utterance: AVFAudio.AVSpeechUtterance)
+  @objc dynamic public func speechSynthesizer(_ synthesizer: AVFAudio.AVSpeechSynthesizer, didPause utterance: AVFAudio.AVSpeechUtterance)
+}
+@_hasMissingDesignatedInitializers public class LIWeak<T> where T : AnyObject {
+  @objc deinit
+}
+public class LIFormElement : Swift.Codable {
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+public protocol LINativeElement {
+  func getInstanceData() -> [Swift.String : Swift.AnyObject]?
+  func getServerInstanceData() -> [Swift.String : Swift.AnyObject]?
+  func setValidationRuleSuccess(_ success: Swift.Bool)
+  func enableElementOtherNonFinalPassed(_ enable: Swift.Bool)
+  func onFormAmend()
+  func onAppTimeout()
+  func setControlEnabled(_ enabled: Swift.Bool)
+  func setControlVisibility(_ visible: Swift.Bool)
+  func setControlValue(_ suffix: Swift.String, _ value: Any)
+  func getElement() -> LogicalInkSDK.LIFormElement?
+  func setTextColor(_ hex: Swift.String)
+  func setBorderColor(_ hex: Swift.String)
+  func setLayerEnabled(_ enabled: Swift.Bool)
+  func setLayerVisibility(_ visible: Swift.Bool)
+}
+@_hasMissingDesignatedInitializers public class SmartSetInfo : Swift.CustomStringConvertible {
+  open var name: Swift.String
+  open var forms: [any LogicalInkSDK.FormInfo]
+  open var validationErrorCount: Swift.Int
+  open var validationTotalCount: Swift.Int
+  public func getValidationErrorsList() -> [any LogicalInkSDK.ValidationErrorInfo]
+  public func getvalidationChangesList() -> [any LogicalInkSDK.ValidationErrorInfo]
+  public var description: Swift.String {
+    get
+  }
+  @objc deinit
+}
+public protocol ValidationErrorInfo : AnyObject, Swift.Decodable {
+  var name: Swift.String? { get }
+  var displayText: Swift.String { get }
+  var pageNumber: Swift.Int { get }
+  var oldState: Swift.String? { get set }
+  var newState: Swift.String? { get set }
+}
+public protocol FormInfo : AnyObject, Swift.CustomStringConvertible {
+  var name: Swift.String { get }
+  var pageCount: Swift.Int { get }
+  var pages: [any LogicalInkSDK.PageInfo]? { get }
+  var validationErrorCount: Swift.Int { get }
+  var validationTotalCount: Swift.Int { get }
+}
+public protocol PageInfo : AnyObject, Swift.CustomStringConvertible {
+  var name: Swift.String? { get }
+  var pageNumber: Swift.Int? { get }
+  var validationErrors: [LogicalInkSDK.LIValidationError] { get set }
+  var validationChanges: [LogicalInkSDK.LIValidationError] { get set }
+  var excludeFromFormFill: Swift.Bool? { get set }
+  var excludeFromOutput: Swift.Bool? { get set }
+}
+@objc @_inheritsConvenienceInitializers public class ErrorInfo : ObjectiveC.NSObject {
+  open var domain: Swift.String?
+  open var code: ObjectiveC.NSInteger?
+  open var userInfo: [Swift.String : Swift.String]?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol FormFillDelegate : AnyObject {
+  func didScrollTo(_ pageOffset: Swift.Int, inForm: any LogicalInkSDK.FormInfo)
+  func formFillDidLoad(_ smartSet: LogicalInkSDK.SmartSetInfo)
+  func onValidationChange(_ smartSet: LogicalInkSDK.SmartSetInfo)
+  func onError(_ errorInfo: LogicalInkSDK.ErrorInfo)
+  func formsSaved(_ didSaveSuccessfully: Swift.Bool)
+  func formEdited()
+}
+public protocol FormPreference : AnyObject {
+  func getServerUrl() -> Swift.String
+  func getSmartSetName() -> Swift.String?
+  func getLanguageName() -> Swift.String?
+  func getSelectedForms() -> [Swift.String]?
+}
+public protocol FacilityUserInfo : AnyObject {
+  func getUserName() -> Swift.String
+  func getPassword() -> Swift.String
+}
+public protocol PatientUserInfo {
+  func getPatientID() -> Swift.Int
+  func getPatientAccountNumber() -> Swift.String
+  func getPatientMRNNumber() -> Swift.String
+}
+public typealias completionBlock = (_ success: Swift.Bool) -> Swift.Void
+@objc @_inheritsConvenienceInitializers public class LIFormFill : ObjectiveC.NSObject, LogicalInkSDK.LIFormContainerDelegate {
+  weak public var fillDelegate: (any LogicalInkSDK.FormFillDelegate)?
+  weak public var formPreference: (any LogicalInkSDK.FormPreference)?
+  weak public var facilityUser: (any LogicalInkSDK.FacilityUserInfo)?
+  weak public var formContainer: LogicalInkSDK.LIFormContainer?
+  public var user: LogicalInkSDK.LIUser?
+  public var patient: LogicalInkSDK.LIPatient?
+  public var serverInfo: LogicalInkSDK.LIServerInfo?
+  public var policy: LogicalInkSDK.LIPolicy?
+  public var patientID: Swift.String
+  public var gesturesEnabled: Swift.Bool
+  final public let languageServices: LogicalInkSDK.LILanguageServices
+  public func initFor(_ tformPreference: any LogicalInkSDK.FormPreference, tfacilityUser: any LogicalInkSDK.FacilityUserInfo, completion: @escaping LogicalInkSDK.completionBlock)
+  public func getFormFillViewFor(_ patientUserInfo: any LogicalInkSDK.PatientUserInfo, formDelegate: any LogicalInkSDK.FormFillDelegate, viewSize: CoreFoundation.CGSize, _ revision: Swift.Int? = nil, _ status: Swift.String? = nil) -> UIKit.UIView
+  public func scrollTo(_ pageIndex: Swift.Int, inForm: any LogicalInkSDK.FormInfo)
+  public func scrollTo(_ pageIndex: Swift.Int, inForm: any LogicalInkSDK.FormInfo, error: LogicalInkSDK.LIValidationError?)
+  public func scrollToNextPage()
+  public func scrollToPreviousPage()
+  public func saveForm()
+  public func uploadLogs(_ completion: @escaping LogicalInkSDK.completionBlock)
+  public func cancel()
+  public func isConnected(_ server: Swift.String?) -> Swift.Bool
+  public func gotoValidationError(_ validationError: any LogicalInkSDK.ValidationErrorInfo)
+  open func didScrollTo(pageIndex containerPageIndex: Swift.Int, totalPages: Swift.Int, formPageIndex: Swift.Int, formModel: LogicalInkSDK.LIFormModel)
+  open func formsDidLoad()
+  public func formLoadError(_ error: Swift.AnyObject?)
+  open func onValidationChange(_ smartSetInfo: LogicalInkSDK.SmartSetInfo)
+  open func onFormSaved(_ didSaveSuccessfully: Swift.Bool)
+  open func onFormSaveFailed()
+  open func onFormEdited()
+  @objc override dynamic public init()
+  @objc deinit
+}
+public class LIFormDetail : Swift.Codable {
+  public var id: Swift.Int?
+  public var formId: Swift.Int?
+  public var selectionMode: Swift.String?
+  public var sortOrder: Swift.Int?
+  public var expression: Swift.String?
+  public var formName: Swift.String?
+  public var formDescription: Swift.String?
+  public var documentType: Swift.String?
+  public var templateIds: [Swift.Int]?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id
+    case formId
+    case selectionMode
+    case sortOrder
+    case expression
+    case formName
+    case formDescription
+    case documentType
+    case templateIds
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+public class LIPageDocumentModel : Swift.Codable, LogicalInkSDK.PageInfo {
+  public var name: Swift.String?
+  public var elements: [LogicalInkSDK.LIFormElement]?
+  public var excludeFromFormFill: Swift.Bool?
+  public var excludeFromOutput: Swift.Bool?
+  public var pageNumber: Swift.Int?
+  public var validationErrors: [LogicalInkSDK.LIValidationError]
+  public var validationChanges: [LogicalInkSDK.LIValidationError]
+  public var description: Swift.String {
+    get
+  }
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case name
+    case elements
+    case excludeFromFormFill
+    case excludeFromOutput
+    case pageNumber
+    case validationErrors
+    case validationChanges
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func getAllElements() -> [LogicalInkSDK.LIFormElement]?
+  public func getElementByName(_ name: Swift.String) -> LogicalInkSDK.LIFormElement?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class LIFormResource : Swift.Codable {
+  public var data: Swift.String?
+  public var id: Swift.String?
+  public var displayName: Swift.String?
+  public var mediaType: Swift.String?
+  public var url: Swift.String?
+  public func getImageResource() -> UIKit.UIImage?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class LIExpression : Swift.Codable {
+  public var elementRef: Swift.String?
+  public var name: Swift.String?
+  public var text: Swift.String?
+  public var trigger: Swift.String?
+  weak public var formElement: LogicalInkSDK.LIFormElement?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public class LIValidationError : Swift.Codable, LogicalInkSDK.ValidationErrorInfo {
+  public var errorMessage: Swift.String?
+  public var fieldName: Swift.String?
+  public var isFinal: Swift.Bool?
+  public var isVisible: Swift.Bool?
+  public var isEnabled: Swift.Bool?
+  public var message: Swift.String?
+  public var result: Swift.String?
+  public var name: Swift.String?
+  public var pageNumber: Swift.Int
+  public var testExpression: Swift.String?
+  public var whenExpression: Swift.String?
+  public var oldState: Swift.String?
+  public var newState: Swift.String?
+  public var displayText: Swift.String {
+    get
+  }
+  public var formElement: LogicalInkSDK.LIFormElement?
+  public func isFinalFormElement() -> Swift.Bool
+  public func isControlVisible() -> Swift.Bool
+  public func isControlEnabled() -> Swift.Bool
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case errorMessage
+    case fieldName
+    case isFinal
+    case isVisible
+    case isEnabled
+    case message
+    case result
+    case name
+    case pageNumber
+    case testExpression
+    case whenExpression
+    case oldState
+    case newState
+    case displayText
+    case formElement
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+extension LogicalInkSDK.LIValidationError : Swift.Equatable {
+  public static func == (lhs: LogicalInkSDK.LIValidationError, rhs: LogicalInkSDK.LIValidationError) -> Swift.Bool
+}
+public class LITemplateDetailedInfo : Swift.Codable {
+  public var lifVersion: Swift.Int?
+  public var productVersion: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var language: Swift.String?
+  public var platform: Swift.String?
+  public var formType: Swift.String?
+  public var isRecurring: Swift.Bool?
+  public var isReviewRequired: Swift.Bool?
+  public var width: Swift.Double?
+  public var height: Swift.Double?
+  public var pages: [any LogicalInkSDK.PageInfo]?
+  public var resources: [LogicalInkSDK.LIFormResource]?
+  public var rules: [LogicalInkSDK.LIValidationError]?
+  public var expressions: [LogicalInkSDK.LIExpression]?
+  public var formLoadedExpression: LogicalInkSDK.LIExpression?
+  public var formSavingExpression: LogicalInkSDK.LIExpression?
+  public var formSavedExpression: LogicalInkSDK.LIExpression?
+  public var globalsExpression: LogicalInkSDK.LIExpression?
+  public var formValidationChangedExpression: LogicalInkSDK.LIExpression?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case lifVersion
+    case productVersion
+    case name
+    case description
+    case language
+    case platform
+    case formType
+    case isRecurring
+    case isReviewRequired
+    case width
+    case height
+    case pages
+    case resources
+    case rules
+    case expressions
+    case formLoadedExpression
+    case formSavingExpression
+    case formSavedExpression
+    case globalsExpression
+    case formValidationChangedExpression
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func getExpressions() -> [LogicalInkSDK.LIExpression]?
+  public func getRules() -> [LogicalInkSDK.LIValidationError]?
+  public func getResourceFor(_ id: Swift.String?) -> LogicalInkSDK.LIFormResource?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class LIFormOrderMetaData : Swift.Codable {
+  public var id: Swift.Int?
+  public var orderNumber: Swift.String?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public class LIFormInfo : Swift.Codable {
+  public var id: Swift.Int?
+  public var templateId: Swift.Int?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var documentType: Swift.String?
+  public var languages: [Swift.Int]?
+  public var platforms: [Swift.String]?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id
+    case templateId
+    case name
+    case description
+    case documentType
+    case languages
+    case platforms
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+public class LIPageInfo : LogicalInkSDK.PageInfo, Swift.Codable {
+  public var name: Swift.String?
+  public var displayText: Swift.String?
+  public var pageNumber: Swift.Int?
+  public var validationErrors: [LogicalInkSDK.LIValidationError]
+  public var validationChanges: [LogicalInkSDK.LIValidationError]
+  public var excludeFromFormFill: Swift.Bool?
+  public var excludeFromOutput: Swift.Bool?
+  public var description: Swift.String
+  public var elements: [LogicalInkSDK.LIFormElement]?
+  public var pageCreatedExpression: LogicalInkSDK.LIExpression?
+  public var pageEnteredExpression: LogicalInkSDK.LIExpression?
+  public var pageExitedExpression: LogicalInkSDK.LIExpression?
+  public var resources: [LogicalInkSDK.LIFormResource]?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case name
+    case pageNumber
+    case validationErrors
+    case validationChanges
+    case excludeFromFormFill
+    case excludeFromOutput
+    case description
+    case elements
+    case pageCreatedExpression
+    case pageEnteredExpression
+    case pageExitedExpression
+    case resources
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func getElementByName(_ name: Swift.String) -> LogicalInkSDK.LIFormElement?
+  public func getAllElements() -> [LogicalInkSDK.LIFormElement]?
+  @objc deinit
+}
+public enum LIInstanceStatusEnum : _DarwinFoundation2.intptr_t, Swift.Codable {
+  case new
+  case incomplete
+  case complete
+  case pendingReview
+  case reviewFailed
+  public init?(rawValue: _DarwinFoundation2.intptr_t)
+  public typealias RawValue = _DarwinFoundation2.intptr_t
+  public var rawValue: _DarwinFoundation2.intptr_t {
+    get
+  }
+}
+extension LogicalInkSDK.LIInstanceStatusEnum {
+  public init?(string: Swift.String)
+}
+public struct LIFormModelStatusMetaData {
+  public var instance: LogicalInkSDK.LIInstance?
+  public var templateId: Swift.Int?
+  public var statusEnum: LogicalInkSDK.LIInstanceStatusEnum?
+  public init(_ inInstance: LogicalInkSDK.LIInstance)
+}
+public enum LIFormModelStateEnum : _DarwinFoundation2.intptr_t, Swift.Codable {
+  case serverComplete
+  case modified
+  case saved
+  case savedAndAudited
+  public init?(rawValue: _DarwinFoundation2.intptr_t)
+  public typealias RawValue = _DarwinFoundation2.intptr_t
+  public var rawValue: _DarwinFoundation2.intptr_t {
+    get
+  }
+}
+public struct LIInstance : Swift.Codable {
+  public var id: Swift.Int?
+  public var status: Swift.String?
+  public var lastModifiedUserName: Swift.String?
+  public var lastModifiedDate: Foundation.Date?
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id
+    case status
+    case lastModifiedUserName
+    case lastModifiedDate
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+public enum LIFormStatusEnum : Swift.String, Swift.CustomStringConvertible, Swift.Codable {
+  case all
+  case blank
+  case complete
+  case awaitingPatient
+  case reviewFailed
+  case pendingReview
+  case pendingDestinations
+  case incomplete
+  case failedDestination
+  case open
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension LogicalInkSDK.LIFormStatusEnum {
+  public init?(string: Swift.String)
+}
+public enum LIEmailStatusEnum : Swift.String, Swift.CustomStringConvertible, Swift.Codable {
+  case all
+  case none
+  case clicked
+  case failed
+  case lockedOut
+  case sent
+  case started
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension LogicalInkSDK.LIEmailStatusEnum {
+  public init?(string: Swift.String)
+}
+@_hasMissingDesignatedInitializers public class LISelectableForms : Swift.Codable {
+  public var canEmail: Swift.Bool?
+  public var sendEmail: Swift.Bool?
+  public var emailAddress: Swift.String?
+  public var emailAddresses: [Swift.String]?
+  public var sendText: Swift.Bool?
+  public var phoneNumber: Swift.String?
+  public var phoneNumbers: [Swift.String]?
+  public var forms: [LogicalInkSDK.LIFormModel]?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIVisitFormDetail : Swift.Decodable {
+  public var orderId: Swift.Int?
+  public var applicationId: Swift.Int?
+  public var formId: Swift.Int?
+  public var packetId: Swift.Int?
+  public var templateId: Swift.Int?
+  public var instanceDataId: Swift.Int?
+  public var instanceId: Swift.Int?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var description: Swift.String?
+  public var orderDescription: Swift.String?
+  public var targetPlatform: Swift.String?
+  public var clientType: Swift.String?
+  public var documentType: Swift.String?
+  public var pageCount: Swift.Int?
+  public var language: Swift.String?
+  public var completionSeconds: Swift.Int?
+  public var lastModified: Foundation.Date?
+  public var submitter: Swift.String?
+  public var instanceStatus: Swift.String?
+  public var status: Swift.String?
+  public var isReviewNeeded: Swift.Bool?
+  public var revision: Swift.Int?
+  public var revisions: [Swift.Int]?
+  public init(from decoder: any Swift.Decoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case orderId
+    case applicationId
+    case formId
+    case packetId
+    case templateId
+    case instanceDataId
+    case instanceId
+    case name
+    case displayName
+    case description
+    case orderDescription
+    case targetPlatform
+    case clientType
+    case documentType
+    case pageCount
+    case language
+    case completionSeconds
+    case lastModified
+    case submitter
+    case instanceStatus
+    case status
+    case isReviewNeeded
+    case revision
+    case revisions
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+extension LogicalInkSDK.LIVisitFormDetail : Swift.Equatable {
+  public static func == (lhs: LogicalInkSDK.LIVisitFormDetail, rhs: LogicalInkSDK.LIVisitFormDetail) -> Swift.Bool
+}
+public class LIFormModel : Swift.Codable, LogicalInkSDK.FormInfo {
+  public var isSelected: Swift.Bool?
+  public var templateId: Swift.Int?
+  public var displayName: Swift.String?
+  public var form: LogicalInkSDK.LIFormInfo?
+  public var selectionMode: Swift.String?
+  public var instance: LogicalInkSDK.LIInstance?
+  public var sortOrder: Swift.Int?
+  public var canToggle: Swift.Bool?
+  public var order: LogicalInkSDK.LIOrder?
+  public var orderId: Swift.Int?
+  public var orderNumber: Swift.String?
+  public var formStatus: Swift.String?
+  public var isAutoSave: Swift.Bool?
+  public var processDestinationsForAutoSave: Swift.Bool?
+  public var templateInfo: LogicalInkSDK.LITemplateDetailedInfo?
+  public var canOpen: Swift.Bool?
+  public var allowMultipleRevisions: Swift.Bool?
+  public var name: Swift.String
+  public var pageCount: Swift.Int
+  public var pages: [any LogicalInkSDK.PageInfo]? {
+    get
+  }
+  public var validationErrorCount: Swift.Int
+  public var validationTotalCount: Swift.Int
+  public var statusEnum: LogicalInkSDK.LIFormModelStateEnum
+  public var description: Swift.String {
+    get
+  }
+  public var instanceData: LogicalInkSDK.LIInstanceModel?
+  weak public var formView: LogicalInkSDK.LIForm?
+  public var saveDate: Foundation.Date?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public func setTheTemplateInfo(_ inTemplateInfo: LogicalInkSDK.LITemplateDetailedInfo)
+  public func isComplete() -> Swift.Bool
+  public func isAmended() -> Swift.Bool
+  public func isSaved() -> Swift.Bool
+  public func isSavedAndAudited() -> Swift.Bool
+  public func amend()
+  public func saved()
+  public func savedAndAudited()
+  public func hasSomeInstanceData() -> Swift.Bool
+  public func getCompletionStatus() -> LogicalInkSDK.LIInstanceStatusEnum
+  public func isSelectedBool() -> Swift.Bool
+  public func canToggleBool() -> Swift.Bool
+  public func canOpenBool() -> Swift.Bool
+  @objc deinit
+}
+extension LogicalInkSDK.LIFormModel : Swift.Equatable {
+  public static func == (lhs: LogicalInkSDK.LIFormModel, rhs: LogicalInkSDK.LIFormModel) -> Swift.Bool
+}
+public func reduceImageDpiCommon(inImage: UIKit.UIImage, boundsSize: CoreFoundation.CGSize) -> UIKit.UIImage
+@_hasMissingDesignatedInitializers public class LIActiveArea2 : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class LIBrush2 : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class LITrace2 : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class LIInkMLModel2 : Swift.Codable {
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class LIInstanceModel : Swift.Codable {
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class LISignatureInstanceModel : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public protocol KeyboardHandlerProtocol {
+  func inFocus(element: Swift.Int)
+  func controlBeingEdited(control: Swift.String?)
+  func pageView() -> UIKit.UIView?
+  func removeAllFocus()
+  func dismissKeyboard()
+  func tabPressed()
+}
+public class LILanguageServices {
+  public var languages: [LogicalInkSDK.LILanguageModel]?
+  public var defaultLanguage: LogicalInkSDK.LILanguageModel?
+  public var loaded: Swift.Bool
+  public init()
+  public func loadLanguages(_ jsonObj: Swift.AnyObject?)
+  public func getLanguageFor(_ inId: Foundation.NSNumber) -> LogicalInkSDK.LILanguageModel?
+  public func getLanguageByName(_ name: Swift.String) -> LogicalInkSDK.LILanguageModel?
+  public func getAllLanguages() -> [LogicalInkSDK.LILanguageModel]?
+  @objc deinit
+}
+public class LIPdfServices {
+  public var filePath: Foundation.URL
+  public init()
+  public func createPdfFromForms(formModels: [LogicalInkSDK.LIFormModel]) -> Foundation.URL
+  @objc deinit
+}
+public struct LIServerInfo : Swift.Codable {
+  public var name: Swift.String?
+  public var policy: LogicalInkSDK.LIPolicy?
+  public var serialNumber: Swift.String?
+  public var serverDateTime: Foundation.Date?
+  public var uniqueIdentifier: Swift.String?
+  public var version: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case _links
+    case name
+    case policy
+    case serialNumber
+    case serverDateTime
+    case uniqueIdentifier
+    case version
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func getMRNLabelName() -> Swift.String?
+  public func getAccntLabelName() -> Swift.String?
+}
+public struct LIPolicy : Swift.Codable {
+  public var accountNumberLabelOverride: Swift.String?
+  public var allowAccountNumberSearch: Swift.Bool?
+  public var allowMrnSearch: Swift.Bool?
+  public var evaluateMRNOnLaunch: Swift.Bool?
+  public var allowNameSearch: Swift.Bool?
+  public var allowNewRecordCreation: Swift.Bool?
+  public var automaticallyShowRecords: Swift.Bool?
+  public var clientThemeName: Swift.String?
+  public var defaultInputType: Swift.String?
+  public var defaultSearchType: Swift.String?
+  public var hipaaLockoutMinutes: Swift.Int?
+  public var hipaaLockoutWarningMinutes: Swift.Int?
+  public var inkAccountInputMask: Swift.String?
+  public var inkMRNInputMask: Swift.String?
+  public var mrnLabelOverride: Swift.String?
+  public var name: Swift.String?
+  public var prohibitSavingIncompleteForms: Swift.Bool?
+  public var showPdfPreviewDialog: Swift.Bool?
+  public var useImplicitWindowsCredentials: Swift.Bool?
+  public var showFormStatusIndicators: Swift.Bool?
+  public var showEmailStatusIndicators: Swift.Bool?
+  public var showFormStatusColumn: Swift.String?
+  public var showEmailStatusColumn: Swift.String?
+  public var poweredByUrl: Swift.String?
+  public var preserveUserSelections: Swift.Bool?
+  public var loggingLevel: Swift.String?
+  public var autoSavePeriodSeconds: Swift.Int?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIApplication : Swift.Codable {
+  public var id: Swift.Int?
+  public var name: Swift.String?
+  public var isActive: Swift.Bool?
+  public var prohibitSavingIncompleteForms: Swift.Bool?
+  public var autoLockFormFill: Swift.Bool?
+  public var forms: [LogicalInkSDK.LIFormDetail]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIDataFieldInfo : Swift.Codable {
+  public var dataType: Swift.String?
+  public var expression: Swift.String?
+  public var id: Swift.Int?
+  public var name: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LILanguageModel : Swift.Codable {
+  public var autoSelectExpression: Swift.String?
+  public var id: Swift.Int?
+  public var isDefault: Swift.Bool?
+  public var isInUse: Swift.Bool?
+  public var name: Swift.String?
+  public init()
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case autoSelectExpression
+    case id
+    case isDefault
+    case isInUse
+    case name
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+public struct LILocation : Swift.Codable {
+  public var id: Swift.Int?
+  public var name: Swift.String?
+  public init(id: Swift.Int, name: Swift.String)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id
+    case name
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+public struct LISearchBy : Swift.Codable {
+  public var id: Swift.Int?
+  public var name: Swift.String?
+  public init(id: Swift.Int, name: Swift.String)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id
+    case name
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+public struct LIPermissions : Swift.Codable {
+  public var publishFolders: [Swift.String]?
+  public var canFormFill: Swift.Bool?
+  public var canViewFormLibrary: Swift.Bool?
+  public var canGenerateReports: Swift.Bool?
+  public var canEmailPatients: Swift.Bool?
+  public var canReviewForms: Swift.Bool?
+  public var canResubmitForms: Swift.Bool?
+  public var canDownloadForms: Swift.Bool?
+  public var canDesignForms: Swift.Bool?
+  public var canPublishForms: Swift.Bool?
+  public var canManageForms: Swift.Bool?
+  public var canManageFormFolders: Swift.Bool?
+  public var canManageSmartSets: Swift.Bool?
+  public var canViewEventLog: Swift.Bool?
+  public var canViewHL7Log: Swift.Bool?
+  public var canManageDestinations: Swift.Bool?
+  public var canManageLocations: Swift.Bool?
+  public var canManageSecurity: Swift.Bool?
+  public var canManageAssets: Swift.Bool?
+  public var canManageHL7: Swift.Bool?
+  public var canManageLanguages: Swift.Bool?
+  public var canManageSettings: Swift.Bool?
+  public var canManageProcedures: Swift.Bool?
+  public var canViewEmailLog: Swift.Bool?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIUser : Swift.Codable {
+  public enum SearchType : Swift.String, Swift.CaseIterable {
+    case mrn
+    case account
+    case name
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [LogicalInkSDK.LIUser.SearchType]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [LogicalInkSDK.LIUser.SearchType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum FormStatusType : Swift.String, Swift.CaseIterable {
+    case all
+    case awaitingPatient
+    case complete
+    case failedDestination
+    case incomplete
+    case none
+    case open
+    case pendingDestinations
+    case pendingReview
+    case reviewFailed
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [LogicalInkSDK.LIUser.FormStatusType]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [LogicalInkSDK.LIUser.FormStatusType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum EmailStatusType : Swift.String, Swift.CaseIterable {
+    case all
+    case clicked
+    case failed
+    case lockedOut
+    case none
+    case sent
+    case started
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [LogicalInkSDK.LIUser.EmailStatusType]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [LogicalInkSDK.LIUser.EmailStatusType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum FilterOperatorType : Swift.String, Swift.CaseIterable {
+    case and
+    case or
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [LogicalInkSDK.LIUser.FilterOperatorType]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [LogicalInkSDK.LIUser.FilterOperatorType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var id: Swift.Int?
+  public var applications: [LogicalInkSDK.LIApplication]?
+  public var roles: [LogicalInkSDK.LIRole]?
+  public var title: Swift.String?
+  public var authenticationType: Swift.String?
+  public var filters: [LogicalInkSDK.LILocation]?
+  public var firstName: Swift.String?
+  public var lastName: Swift.String?
+  public var displayName: Swift.String
+  public var defaultApplicationID: Swift.Int?
+  public var defaultLocationID: Swift.Int?
+  public var defaultSearchType: Swift.Int?
+  public var lastApplicationID: Swift.Int?
+  public var lastLocationID: Swift.Int?
+  public var lastSearchType: Swift.Int?
+  public var lastFormStatus: Swift.Int?
+  public var lastEmailStatus: Swift.Int?
+  public var lastFilterOperator: Swift.Int?
+  public var userName: Swift.String?
+  public var active: Swift.Bool?
+  public var permissions: LogicalInkSDK.LIPermissions?
+  public var defaultSearchTypeString: Swift.String?
+  public var lastFormStatusString: Swift.String?
+  public var lastEmailStatusString: Swift.String?
+  public var lastFilterOperatorString: Swift.String?
+  public var isAdvancedSearchDisplayed: Swift.Bool?
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id
+    case applications
+    case roles
+    case title
+    case authenticationType
+    case filters
+    case firstName
+    case lastName
+    case displayName
+    case defaultApplicationID
+    case defaultLocationID
+    case defaultSearchType
+    case lastApplicationID
+    case lastLocationID
+    case lastSearchType
+    case lastFormStatus
+    case lastEmailStatus
+    case lastFilterOperator
+    case isAdvancedSearchDisplayed
+    case userName
+    case active
+    case permissions
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func getUserFieldValues() -> [Swift.String : Swift.AnyObject]
+  public func getDefaultApplication() -> LogicalInkSDK.LIApplication?
+  public func getApplicationByName(_ applicationName: Swift.String) -> LogicalInkSDK.LIApplication?
+  public func getApplicationById(_ applicationId: Swift.Int) -> LogicalInkSDK.LIApplication?
+  public func getAllApplications() -> [LogicalInkSDK.LIApplication]
+  public func getLastFormStatusString() -> Swift.String
+  public func getLastEmailStatusString() -> Swift.String
+  public func getLastFilterOperatorString() -> Swift.String
+}
+public struct UserSelections : Swift.Codable {
+  public var userId: Swift.Int
+  public var lastSmartSetId: Swift.Int?
+  public var lastLocationId: Swift.Int?
+  public var lastSearchType: Swift.Int?
+  public var lastFormStatus: Swift.Int?
+  public var lastEmailStatus: Swift.Int?
+  public var lastFilterOperator: Swift.Int?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIRole : Swift.Codable {
+  public var applications: [LogicalInkSDK.LIApplication]?
+  public var defaultLocationId: Swift.Int?
+  public var filters: [LogicalInkSDK.LILocation]?
+  public var id: Swift.Int
+  public var isAdSecurityGroup: Swift.Bool?
+  public var name: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIPatient {
+  public enum FormStatus : Swift.String, Swift.CaseIterable {
+    case failedDestination
+    case incomplete
+    case pendingReview
+    case reviewFailed
+    case pendingDestinations
+    case awaitingPatient
+    case open
+    case complete
+    case none
+    case blank
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [LogicalInkSDK.LIPatient.FormStatus]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [LogicalInkSDK.LIPatient.FormStatus] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum PatientEmailStatus : Swift.String, Swift.CaseIterable {
+    case lockedOut
+    case failed
+    case started
+    case clicked
+    case sent
+    case none
+    case blank
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [LogicalInkSDK.LIPatient.PatientEmailStatus]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [LogicalInkSDK.LIPatient.PatientEmailStatus] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var accountNumber: Swift.String?
+  public var admitDate: Foundation.Date?
+  public var dateOfBirth: Foundation.Date?
+  public var dischargeDate: Foundation.Date?
+  public var facility: Swift.String?
+  public var firstName: Swift.String?
+  public var lastName: Swift.String?
+  public var id: Swift.Int?
+  public var lastUpdated: Foundation.Date?
+  public var mrn: Swift.String?
+  public var status: Swift.String?
+  public var formStatusValue: Swift.Int?
+  public var formStatusCount: Swift.Int?
+  public var patientEmailStatusValue: Swift.Int?
+  public var formStatus: Swift.String?
+  public var patientEmailStatus: Swift.String?
+  public func getFullName() -> Swift.String
+  public func getMRN() -> Swift.String
+  public func getDOB() -> Swift.String
+  public func getAdmitDate() -> Swift.String
+}
+extension LogicalInkSDK.LIPatient {
+  public init(id: Swift.Int)
+  public init(id: Swift.Int, firstName: Swift.String, lastName: Swift.String, accountNumber: Swift.String, mrn: Swift.String, dateOfBirth: Foundation.Date?, admitDate: Foundation.Date?)
+}
+extension LogicalInkSDK.LIPatient : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case accountNumber
+    case admitDate
+    case dateOfBirth
+    case dischargeDate
+    case facility
+    case firstName
+    case lastName
+    case id
+    case lastUpdated
+    case mrn
+    case status
+    case formStatus
+    case formStatusCount
+    case patientEmailStatus
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+public struct LIVisit {
+  public var visitId: Swift.Int?
+  public var facility: Swift.String?
+  public var accountNumber: Swift.String?
+  public var admitDate: Foundation.Date?
+  public var dischargeDate: Foundation.Date?
+  public var patient: LogicalInkSDK.LIVisitPatientDetail?
+  public var displayName: Swift.String?
+  public var forms: [LogicalInkSDK.LIVisitFormDetail]?
+  public var isSelected: Swift.Bool
+}
+extension LogicalInkSDK.LIVisit {
+  public init(id: Swift.Int)
+}
+extension LogicalInkSDK.LIVisit : Swift.Decodable {
+  public init(from decoder: any Swift.Decoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case visitId
+    case facility
+    case accountNumber
+    case admitDate
+    case dischargeDate
+    case patient
+    case displayName
+    case forms
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+public struct LIOrder : Swift.Codable {
+  public var id: Swift.Int?
+  public var orderNumber: Swift.String?
+  public var orderDate: Foundation.Date?
+  public var orderProvider: Swift.String?
+  public var visitId: Swift.Int?
+  public var fieldsXml: Swift.String?
+  public var lastUpdated: Foundation.Date?
+  public var description: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id
+    case orderNumber
+    case orderDate
+    case orderProvider
+    case visitId
+    case fieldsXml
+    case lastUpdated
+    case description
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+public struct LIVisitPatientDetail : Swift.Decodable {
+  public var id: Swift.Int?
+  public var empi: Swift.String?
+  public var medicalRecordNumber: Swift.String?
+  public var dateOfBirth: Foundation.Date?
+  public var lastName: Swift.String?
+  public var middleName: Swift.String?
+  public var firstName: Swift.String?
+  public var facility: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id
+    case empi
+    case medicalRecordNumber
+    case dateOfBirth
+    case lastName
+    case middleName
+    case firstName
+    case facility
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+@_hasMissingDesignatedInitializers public class LISessionInfo : Swift.Codable {
+  public static let sharedInstance: LogicalInkSDK.LISessionInfo
+  public var currentUser: LogicalInkSDK.LIUser?
+  public var patient: LogicalInkSDK.LIPatient?
+  public var policy: LogicalInkSDK.LIPolicy?
+  public var recallArray: [LogicalInkSDK.LIRecall]?
+  public var validationChanges: [LogicalInkSDK.LIValidationError]?
+  public var validationRules: [LogicalInkSDK.LIValidationError]?
+  public var currentSmartset: LogicalInkSDK.LIApplication?
+  public var completionTimeSeconds: Swift.Int?
+  public var autoSavePeriodSeconds: Swift.Int?
+  public var pinNumber: Swift.String?
+  public var printerURL: Swift.String?
+  public var printerDisplayName: Swift.String?
+  public var urlDict: LogicalInkSDK.LIUrlDict?
+  public var tokenId: Swift.String?
+  public var tokenValidUntil: Foundation.Date?
+  public var idleTimerExpiry: Foundation.Date?
+  public var urlLaunchParams: Swift.String?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class LIRecall : Swift.Codable {
+  public var recallField: Swift.String?
+  public var formName: Swift.String?
+  public var formElementName: Swift.String?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIProcedure : Swift.Codable {
+  public var id: Swift.Int?
+  public var name: Swift.String?
+  public var risks: [LogicalInkSDK.LIRisk]
+  public var notes: [LogicalInkSDK.LINote]
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIRisk : Swift.Codable {
+  public var id: Swift.Int?
+  public var procedureId: Swift.Int?
+  public var risk: Swift.String?
+  public var sortOrder: Swift.Int?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LINote : Swift.Codable {
+  public var id: Swift.Int?
+  public var procedureId: Swift.Int?
+  public var procedureUserId: Swift.Int?
+  public var notes: Swift.String?
+  public var username: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIAutoPop : Swift.Codable {
+  public var isValid: Swift.Bool?
+  public var message: Swift.String?
+  public var traceLogWarnings: [Swift.String]?
+  public var visitCreated: Swift.Bool?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public class LITextAttributes : Swift.Codable {
+  public var familyName: Swift.String?
+  public var pointSize: CoreFoundation.CGFloat?
+  public var isBold: Swift.Bool?
+  public var isItalic: Swift.Bool?
+  public var isUnderline: Swift.Bool?
+  public var horizontalAlignment: Swift.String?
+  public var textColor: Swift.String?
+  public init(familyName: Swift.String, pointSize: CoreFoundation.CGFloat, isBold: Swift.Bool, isItalic: Swift.Bool, isUnderline: Swift.Bool, horizontalAlignment: Swift.String, textColor: Swift.String)
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case familyName
+    case pointSize
+    case isBold
+    case isItalic
+    case isUnderline
+    case horizontalAlignment
+    case textColor
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+public class LIUrlDict : Swift.Codable {
+  public var AccountNumber: Swift.String?
+  public var OrderNumber: Swift.String?
+  public var PatientLastName: Swift.String?
+  public var PatientFirstName: Swift.String?
+  public var DateOfBirth: Swift.String?
+  public var MRN: Swift.String?
+  public var UserName: Swift.String?
+  public var Password: Swift.String?
+  public var Language: Swift.String?
+  public var Facility: Swift.String?
+  public var returnURL: Swift.String?
+  public var SmartSet: Swift.String?
+  public var SelectedForms: Swift.String?
+  public var visitFieldsXml: Swift.Dictionary<Swift.String, Swift.Dictionary<Swift.String, Swift.String>>?
+  public var isUrlLaunch: Swift.Bool
+  public var BypassOverride: Swift.Bool?
+  public var GesturesEnabled: Swift.Bool?
+  public init(urlDict: Swift.Dictionary<Swift.String, Swift.String>)
+  public func convertToAnyDict() -> [Swift.String : Any]
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case AccountNumber
+    case OrderNumber
+    case PatientFirstName
+    case PatientLastName
+    case DateOfBirth
+    case MRN
+    case UserName
+    case Password
+    case Language
+    case Facility
+    case returnURL
+    case SmartSet
+    case SelectedForms
+    case visitFieldsXml
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public class LIUrlLaunchParsedObject : Swift.Codable {
+  public var isUrlLaunch: Swift.Bool
+  public var byPassFormSelectionScreen: Swift.Bool?
+  public var accountNumber: Swift.String?
+  public var MRN: Swift.String?
+  public var defaultSmartset: Swift.String?
+  public var callbackUrl: Swift.String?
+  public var defaultLanguage: Swift.String?
+  public var defaultOrder: Swift.String?
+  public var selectedForms: [Swift.String]?
+  public var username: Swift.String?
+  public var password: Swift.String?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case username
+    case password
+    case accountNumber
+    case defaultOrder
+    case MRN
+    case defaultSmartset
+    case formsString
+    case defaultLanguage
+    case callbackUrl
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+public struct LIAssetBinding : Swift.Codable {
+  public var dataField: Swift.String?
+  public var isAutoRefresh: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIBinding : Swift.Codable {
+  public var dataField: Swift.String?
+  public var isAutoRefresh: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIEmailObject : Swift.Codable {
+  public var succeeded: Swift.Bool?
+  public var message: Swift.String?
+  public var email: LogicalInkSDK.LIEmail?
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case succeeded
+    case message
+    case email
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+}
+public struct LIEmail : Swift.Codable {
+  public var visitId: Swift.Int?
+  public var emailToAddress: Swift.String?
+  public var smartSetId: Swift.Int?
+  public var selectedLanguageId: Swift.Int?
+  public var packetId: Swift.Int?
+  public var senderId: Swift.Int?
+  public var emailTemplate: LogicalInkSDK.LIEmailTemplate?
+  public var patientForms: [LogicalInkSDK.LIpatientForms]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIEmailTemplate : Swift.Codable {
+  public var id: Swift.Int?
+  public var name: Swift.String?
+  public var purpose: Swift.Int?
+  public var body: Swift.String?
+  public var toAddress: Swift.String?
+  public var toDisplayName: Swift.String?
+  public var fromAddress: Swift.String?
+  public var fromDisplayName: Swift.String?
+  public var subject: Swift.String?
+  public var timeOutDays: Swift.Int?
+  public var emailDateType: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIpatientForms : Swift.Codable {
+  public var templateId: Swift.Int?
+  public var orderId: Swift.Int?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LILayer : Swift.Codable {
+  public var name: Swift.String?
+  public var isVisible: Swift.Bool?
+  public var isEnabled: Swift.Bool?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LITickMark : Swift.Codable {
+  public var size: Swift.Int?
+  public var label: Swift.String?
+  public var value: Swift.Float?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LIPadding : Swift.Codable {
+  public var left: Swift.Int?
+  public var top: Swift.Int?
+  public var right: Swift.Int?
+  public var bottom: Swift.Int?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers public class LINetworkManager : ObjectiveC.NSObject, Foundation.URLSessionTaskDelegate, Foundation.URLSessionDataDelegate, Foundation.URLSessionDelegate {
+  public static let sharedInstance: LogicalInkSDK.LINetworkManager
+  public static var serverUrl: Swift.String {
+    get
+    set
+  }
+  public var sessionConfigJSON: Foundation.URLSessionConfiguration?
+  public var sessionConfig: Foundation.URLSessionConfiguration?
+  public var serverInfo: LogicalInkSDK.LIServerInfo?
+  public var dataFieldServices: LogicalInkSDK.LIDataFieldService
+  public var sessionCredential: Foundation.URLCredential
+  public var errorMessage: Foundation.NSString
+  public var jsFileContent: Swift.String?
+  public var jsLibFileContent: Swift.String?
+  public func refresh(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func refresh()
+  public func logout(_ user: LogicalInkSDK.LIUser, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getOrderForOrderNumber(_ orderNumber: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getProcedures(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func saveProcedureNotes(_ procedureName: Swift.String, userName: Swift.String, notes: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func packetCreate(_ visitId: Swift.Int, smartsetID: Swift.Int, forms: Swift.AnyObject, state: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func packetSave(_ packetId: Swift.Int, packetString: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func packetCancel(_ packetId: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func packetAmend(_ packetId: Swift.Int, templateId: Swift.Int, orderId: Swift.Int, packetString: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func packetPrint(_ packetId: Swift.Int, packetString: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func sendEmail(_ visitId: Swift.Int, smartsetID: Swift.Int, selectedLanguageID: Swift.Int?, email: Swift.String, phone: Swift.String, forms: Swift.AnyObject, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func auditOpen(_ instanceId: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func auditLog(message: Swift.String, templateId: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func loadJSFile(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getPatientsInfoBy(_ name: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getPatientVisitDetails(_ visitId: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getPatientVisitFormDetails(_ visitId: Swift.String, templateId: Swift.Int, orderId: Swift.Int, instanceRevision: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getInstanceInfo(_ templateID: Swift.Int, orderID: Swift.Int, forEdit: Swift.Bool, clearSignatures: Swift.Bool = false, revision: Swift.Int?, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getApplicationInfo(_ applicationId: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getFormsInfoForApplication(_ visitID: Swift.Int, smartSetID: Swift.Int, languageID: Swift.Int, orderID: Swift.String, revision: Swift.Int?, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getApplicationsFor(_ visitID: Swift.String, smartsetName: Swift.String, completion: (_ result: Swift.AnyObject?, _ success: Swift.Bool) -> Swift.Void)
+  public func loginUser(_ username: Swift.String, password: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getUserInfo(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getUserPermissions(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getFormPage(_ instanceId: Swift.Int, pageNumber: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func downloadPDF(_ visitId: Swift.Int, instanceId: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func updateReviewStatus(_ visitId: Swift.Int, instanceDataId: Swift.Int, result: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func resubmitSingle(_ instanceId: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func resubmit(_ reason: Swift.String, instanceDataId: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getRolesDetailsForUserId(_ userId: Swift.Int, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func updateUserSelections(_ parameters: Swift.Dictionary<Swift.String, Swift.AnyObject>?, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getFormTemplateInfo(_ templateId: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func searchPatientFromMRN(_ mrn: Swift.String, location: Swift.Int, formStatus: Swift.String, filterOperator: Swift.String, emailStatus: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func searchPatientFromAccountNumber(_ accountNumber: Swift.String, location: Swift.Int, formStatus: Swift.String, filterOperator: Swift.String, emailStatus: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func searchPatientFromName(_ name: Swift.String, location: Swift.Int, formStatus: Swift.String, filterOperator: Swift.String, emailStatus: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func searchPatientFromAutoPop(_ params: Swift.Dictionary<Swift.String, Swift.AnyObject>?, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func searchAllPatientVisits(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getEmail(token: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getServerInfoForFacility(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func initializeServerInfo(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getLanguagesInfo(visitID: Swift.String, smartsetID: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func getServerInfo(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func downloadAsset(assetUrl: Swift.String, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func postInstanceData(_ packetID: Swift.Int, parameters: Swift.Dictionary<Swift.String, Swift.AnyObject>?, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public func postLogFile(logPaths: Swift.Array<Foundation.URL>, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  public var session: Foundation.URLSession?
+  public var sessionJson: Foundation.URLSession?
+  @objc public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+  @objc public func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: (any Swift.Error)?)
+  @objc public func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse, completionHandler: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
+  public func logMarker()
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_Concurrency.MainActor @preconcurrency public class LIPage : UIKit.UIScrollView, UIKit.UIScrollViewDelegate, UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor @preconcurrency weak public var template: LogicalInkSDK.LITemplateDetailedInfo?
+  @_Concurrency.MainActor @preconcurrency weak public var pageDocument: LogicalInkSDK.LIPageInfo?
+  @_Concurrency.MainActor @preconcurrency weak public var formView: LogicalInkSDK.LIForm?
+  @_Concurrency.MainActor @preconcurrency weak public var elementsContainer: UIKit.UIView?
+  @_Concurrency.MainActor @preconcurrency public var shouldAllowTouches: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var normalScale: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var origContentSize: CoreFoundation.CGSize
+  @_Concurrency.MainActor @preconcurrency public var controlBeingEdited: Swift.String?
+  @_Concurrency.MainActor @preconcurrency final public let OVERLAY_TAG_OFFSET: Swift.Int
+  @_Concurrency.MainActor @preconcurrency final public let OVERLAY_TAG_LABEL_OFFSET: Swift.Int
+  @_Concurrency.MainActor @preconcurrency public var lastFocussedFieldTag: Swift.Int?
+  @_Concurrency.MainActor @preconcurrency public init(inTemplate: LogicalInkSDK.LITemplateDetailedInfo, inPageDocument: LogicalInkSDK.LIPageInfo, inFrameRect: CoreFoundation.CGRect, inForm: LogicalInkSDK.LIForm)
+  @objc deinit
+  @_Concurrency.MainActor @preconcurrency public func setZooming(canZoom: Swift.Bool = true)
+  @_Concurrency.MainActor @preconcurrency @objc public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor @preconcurrency @objc public func scrollViewWillBeginDragging(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency public func endEditing()
+  @_Concurrency.MainActor @preconcurrency @objc public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public func doDoubleTap()
+  @_Concurrency.MainActor @preconcurrency @objc public func viewForZooming(in scrollView: UIKit.UIScrollView) -> UIKit.UIView?
+  @_Concurrency.MainActor @preconcurrency public func getCurrentZoomLevel() -> CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public func setZoomLevel(inZoomLevel: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor @preconcurrency public func didAppear()
+  @_Concurrency.MainActor @preconcurrency public func resetZoom()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency public func resetFocusedControl()
+  @_Concurrency.MainActor @preconcurrency public func populateElements()
+  @_Concurrency.MainActor @preconcurrency public func addSealedOverlay()
+  @_Concurrency.MainActor @preconcurrency public func amendPage()
+  @_Concurrency.MainActor @preconcurrency public func bringFocus(_ fieldName: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency public func bringFocus(error: LogicalInkSDK.LIValidationError)
+  @_Concurrency.MainActor @preconcurrency public func resizeForParentBounds(_ pageSize: CoreFoundation.CGSize)
+}
+extension LogicalInkSDK.LIPage : LogicalInkSDK.KeyboardHandlerProtocol {
+  @_Concurrency.MainActor @preconcurrency public func removeAllFocus()
+  @_Concurrency.MainActor @preconcurrency public func dismissKeyboard()
+  @_Concurrency.MainActor @preconcurrency public func tabPressed()
+  @_Concurrency.MainActor @preconcurrency public func controlBeingEdited(control: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency public func inFocus(element: Swift.Int)
+  @_Concurrency.MainActor @preconcurrency public func pageView() -> UIKit.UIView?
+}
+public protocol LIFormContainerDelegate : AnyObject {
+  func formsDidLoad()
+  func formLoadError(_ error: Swift.AnyObject?)
+  func onFormEdited()
+  func onValidationChange(_ smartSetInfo: LogicalInkSDK.SmartSetInfo)
+  func onFormSaved(_ didSaveSuccessfully: Swift.Bool)
+  func onFormSaveFailed()
+  func didScrollTo(pageIndex containerPageIndex: Swift.Int, totalPages: Swift.Int, formPageIndex: Swift.Int, formModel: LogicalInkSDK.LIFormModel)
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class LIFormContainer : UIKit.UIView, UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor @preconcurrency public var formModels: [LogicalInkSDK.LIFormModel]
+  @_Concurrency.MainActor @preconcurrency public var forms: [LogicalInkSDK.LIForm]
+  @_Concurrency.MainActor @preconcurrency public var currentIndexPath: Foundation.IndexPath
+  @_Concurrency.MainActor @preconcurrency public var smartSetName: Swift.String
+  @_Concurrency.MainActor @preconcurrency public var movieControllers: [AVKit.AVPlayerViewController]
+  @_Concurrency.MainActor @preconcurrency public var packetId: Swift.Int
+  @_Concurrency.MainActor @preconcurrency public var gesturesEnabled: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency weak public var formContainerDelegate: (any LogicalInkSDK.LIFormContainerDelegate)?
+  @_Concurrency.MainActor @preconcurrency public var fieldName: Swift.String!
+  @_Concurrency.MainActor @preconcurrency public init(frame: CoreFoundation.CGRect, formContDelegate: any LogicalInkSDK.LIFormContainerDelegate)
+  @objc deinit
+  @_Concurrency.MainActor @preconcurrency public func getValidationChanges(_ formModel: LogicalInkSDK.LIFormModel?)
+  @_Concurrency.MainActor @preconcurrency public func updateFormModels(_ formModels: [LogicalInkSDK.LIFormModel], smartsetName: Swift.String, revision: Swift.Int?)
+  @_Concurrency.MainActor @preconcurrency public func updateFormModelForAmend(_ formModel: LogicalInkSDK.LIFormModel, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  @_Concurrency.MainActor @preconcurrency public func save()
+  @_Concurrency.MainActor @preconcurrency public func saveSynchronously(index: Swift.Int)
+  @_Concurrency.MainActor @preconcurrency public func displayErrorMessage()
+  @_Concurrency.MainActor @preconcurrency public func sendAuditLog(completion: @escaping LogicalInkSDK.LICompletionBlockType)
+  @_Concurrency.MainActor @preconcurrency public func amend(_ formModel: LogicalInkSDK.LIFormModel)
+  @_Concurrency.MainActor @preconcurrency public func appTimeout(_ formModel: LogicalInkSDK.LIFormModel)
+  @_Concurrency.MainActor @preconcurrency @objc public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public func isAllSaveOperationComplete() -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public func resizeForParentBounds(_ parentBounds: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency public func checkAllFormsLoaded()
+  @_Concurrency.MainActor @preconcurrency public func getSmartSetInfo() -> LogicalInkSDK.SmartSetInfo
+  @_Concurrency.MainActor @preconcurrency public func formHasBeenEdited()
+  @_Concurrency.MainActor @preconcurrency public func updateRecallFieldInFormElement(_ formElement: LogicalInkSDK.LIFormElement, value: Any)
+  @_Concurrency.MainActor @preconcurrency public func notifyValidationChange()
+  @_Concurrency.MainActor @preconcurrency public func validate()
+  @_Concurrency.MainActor @preconcurrency public func totalPages() -> Swift.Int
+  @_Concurrency.MainActor @preconcurrency public func getPageNav() -> (currentPageIndex: Swift.Int, totalPageCount: Swift.Int, formPageIndex: Swift.Int, currentFormModel: LogicalInkSDK.LIFormModel?)
+  @_Concurrency.MainActor @preconcurrency public func currentPageIndexInAllForms() -> Swift.Int
+  @_Concurrency.MainActor @preconcurrency public func scrollTo(_ inFormModel: LogicalInkSDK.LIFormModel, inFormPageIndex: Swift.Int, error: LogicalInkSDK.LIValidationError? = nil, animated: Swift.Bool = true)
+  @_Concurrency.MainActor @preconcurrency public func getIndexPathFromPageIndex(index: Swift.Int) -> Foundation.IndexPath
+  @_Concurrency.MainActor @preconcurrency public func disablePageControls()
+  @_Concurrency.MainActor @preconcurrency public func enablePageControls()
+  @_Concurrency.MainActor @preconcurrency public func addCurrentPageToContainer()
+  @_Concurrency.MainActor @preconcurrency public func removePageFromContainer()
+  @_Concurrency.MainActor @preconcurrency public func scrollToNextPage()
+  @_Concurrency.MainActor @preconcurrency public func scrollToPreviousPage()
+  @_Concurrency.MainActor @preconcurrency public func addForm(_ formModel: LogicalInkSDK.LIFormModel) -> LogicalInkSDK.LIForm
+  @objc @_Concurrency.MainActor @preconcurrency public func observeMoviePlayer(notification: Foundation.NSNotification)
+  @_Concurrency.MainActor @preconcurrency public func pauseAVPlayers()
+  @objc @_Concurrency.MainActor @preconcurrency public func rotated()
+  @_Concurrency.MainActor @preconcurrency public func reloadData()
+  @_Concurrency.MainActor @preconcurrency public func getIndexPathForCurrentPage() -> Foundation.IndexPath?
+  @_Concurrency.MainActor @preconcurrency public func checkFormModelsForAutoSave(_ nextFormModel: LogicalInkSDK.LIFormModel)
+}
+extension LogicalInkSDK.LIFormContainer : UIKit.UICollectionViewDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func scrollViewDidEndDecelerating(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor @preconcurrency public func updateCurrentIndexPath()
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+}
+extension LogicalInkSDK.LIFormContainer : UIKit.UICollectionViewDataSource {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func numberOfSections(in collectionView: UIKit.UICollectionView) -> Swift.Int
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, willDisplay cell: UIKit.UICollectionViewCell, forItemAt indexPath: Foundation.IndexPath)
+}
+public func getTopViewController() -> UIKit.UIViewController?
+public var progressShown: Swift.Bool
+public var progressTimer: LogicalInkSDK.LITimer
+public var globalTokenTimer: LogicalInkSDK.LITimer
+public func showProgress(message: Swift.String)
+public func setProgress(progress: CoreFoundation.CGFloat, message: Swift.String)
+public func isProgressBeingShown() -> Swift.Bool
+public func hideProgress()
+public func isNativeView(_ view: UIKit.UIView?) -> Swift.Bool
+public func isOnIgnoreList(_ view: UIKit.UIView?) -> Swift.Bool
+public func generateTimeStringFromDate(_ date: Foundation.Date, format: Swift.String) -> Swift.String
+public func generateTimeStringFromNumber(_ number: Foundation.NSNumber) -> Swift.String
+public func removeTimeComponent(_ fromDate: Foundation.Date) -> Foundation.Date
+public func removeDayComponent(_ fromDate: Foundation.Date) -> Foundation.Date
+public func getDateFromString(_ strDate: Swift.String) -> Swift.AnyObject?
+public func getStringFromDate(_ date: Foundation.Date, format: Swift.String?) -> Swift.String?
+public func getFormattedDateStringFromString(_ dateString: Swift.String, format: Swift.String) -> Swift.String?
+public func getUnderlinedString(_ text: Swift.String) -> Foundation.NSAttributedString
+public func getAlignedString(_ text: Swift.String, alignment: UIKit.NSTextAlignment) -> Foundation.NSAttributedString
+public func getFormattedStringFromHTML(_ html: Swift.String) -> Foundation.NSAttributedString
+public func countLabelLines(_ label: LogicalInkSDK.AttributedLabel) -> Swift.Int
+public func addSpacesToWords(_ stringToFix: Swift.String) -> Swift.String
+public func isNull(_ object: Swift.AnyObject?) -> Swift.Bool
+public func handleIfFailure(_ result: Swift.AnyObject?, success: Swift.Bool, completionCallback: LogicalInkSDK.LICompletionBlockType?) -> Swift.Bool
+public func removeElement(_ element: Swift.AnyObject, fromArray: [Swift.AnyObject])
+public func scaleFromLargeViewRect(_ largeViewRect: CoreFoundation.CGRect, toSmallViewRect: CoreFoundation.CGRect) -> Swift.Float
+public func scaleFromSmallViewRect(_ smallViewRect: CoreFoundation.CGRect, toLargeViewRect: CoreFoundation.CGRect) -> Swift.Float
+public func scaleFromDesigner(_ designerRect: CoreFoundation.CGRect, toViewRect: CoreFoundation.CGRect) -> Swift.Float
+public func scaleFromViewRect(_ viewRect: CoreFoundation.CGRect, toDesignerRect: CoreFoundation.CGRect) -> Swift.Float
+public func scaleFromSize(_ size: CoreFoundation.CGSize, toSize: CoreFoundation.CGSize) -> Swift.Float
+public func windowInterfaceOrientation() -> UIKit.UIInterfaceOrientation?
+public func parseUrl(url: Foundation.URL) -> Swift.Dictionary<Swift.String, Swift.String>
+public func parseUrlDictToSafeString(urlDict: Swift.Dictionary<Swift.String, Swift.String>) -> Swift.String
+public func renameUrlDictToAutoPop(urlDict: Swift.Dictionary<Swift.String, Swift.String>) -> Swift.Dictionary<Swift.String, Any>
+public func dictToString(dict: Swift.Dictionary<Swift.String, Swift.AnyObject>) -> Swift.String
+public func isConnectedToNetwork() -> Swift.Bool
+@_hasMissingDesignatedInitializers public class LITimer {
+  public var progressTimer: Foundation.Timer
+  public var threshold: Swift.Int
+  public var tokenTimer: Foundation.Timer
+  public var tokenInterval: Swift.Double
+  public func start()
+  public func stop()
+  public func setTokenTimer()
+  public func stopTokenTimer()
+  @objc deinit
+}
+public func randomString(length: Swift.Int) -> Swift.String
+public func stringReplace(myString: Swift.String, _ index: Swift.Int, _ newChar: Swift.Character) -> Swift.String
+public func isAuthTokenStillValid() -> Swift.Bool
+public func isAuthTokenExpiringSoon() -> Swift.Bool
+public func checkAndUpdateAuthToken(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+public func authTokenGetNew(_ completion: @escaping LogicalInkSDK.LICompletionBlockType)
+public func authTokenExpired()
+public func preciseRound(_ value: Swift.Double, precision: Swift.Int = 0) -> Swift.Double
+public func isValidSmartset(object: Swift.AnyObject?) -> Swift.Bool
+public func logSettings()
+public func getLogFiles(_ incomingFilePaths: Swift.Array<Foundation.URL>) -> Swift.String
+public func uploadLogFiles(_ incomingFilePaths: Swift.Array<Foundation.URL>, completion: @escaping LogicalInkSDK.LICompletionBlockType)
+public typealias LIExpressionCompletionBlockType = (_ result: [LogicalInkSDK.LIEvent], _ errorMessage: Swift.String?) -> Swift.Void
+@objc @_inheritsConvenienceInitializers public class LIValidation : ObjectiveC.NSObject {
+  final public let context: JavaScriptCore.JSContext?
+  @objc override dynamic public init()
+  public func setupValidationFor(_ elementsArr: [LogicalInkSDK.LIFormElement])
+  public func updateValueFor(_ element: LogicalInkSDK.LIFormElement)
+  public func validateWithRule(_ expression: Swift.String, defRet: Swift.Bool) -> Swift.Bool
+  public func getValueForExpression(_ expression: Swift.String) -> (JavaScriptCore.JSValue?, Swift.String?)
+  public func getEventsForExpression(_ expression: Swift.String, completion: @escaping LogicalInkSDK.LIExpressionCompletionBlockType)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class YPDrawSignatureView2 : UIKit.UIView {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency open var strokeWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency open var strokeColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency open var signatureBackgroundColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency open var containsSignature: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesMoved(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency open func clearSignature()
+  @_Concurrency.MainActor @preconcurrency open func getSignature(_ scale: CoreFoundation.CGFloat = 1) -> UIKit.UIImage?
+  @_Concurrency.MainActor @preconcurrency open func getSignatureCropped(_ scale: CoreFoundation.CGFloat = 1) -> UIKit.UIImage?
+  @objc deinit
+}
+extension LogicalInkSDK.AttributedLabel.ContentAlignment : Swift.Equatable {}
+extension LogicalInkSDK.AttributedLabel.ContentAlignment : Swift.Hashable {}
+extension LogicalInkSDK.AttributedLabel.ContentAlignment : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIAlertType : Swift.Equatable {}
+extension LogicalInkSDK.LIAlertType : Swift.Hashable {}
+extension LogicalInkSDK.LIFormDetail.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIFormDetail.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIFormDetail.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIPageDocumentModel.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIPageDocumentModel.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIPageDocumentModel.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIValidationError.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIValidationError.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIValidationError.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LITemplateDetailedInfo.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LITemplateDetailedInfo.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LITemplateDetailedInfo.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIFormInfo.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIFormInfo.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIFormInfo.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIPageInfo.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIPageInfo.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIPageInfo.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIInstanceStatusEnum : Swift.Equatable {}
+extension LogicalInkSDK.LIInstanceStatusEnum : Swift.Hashable {}
+extension LogicalInkSDK.LIInstanceStatusEnum : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIFormModelStateEnum : Swift.Equatable {}
+extension LogicalInkSDK.LIFormModelStateEnum : Swift.Hashable {}
+extension LogicalInkSDK.LIFormModelStateEnum : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIInstance.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIInstance.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIInstance.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIFormStatusEnum : Swift.Equatable {}
+extension LogicalInkSDK.LIFormStatusEnum : Swift.Hashable {}
+extension LogicalInkSDK.LIFormStatusEnum : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIEmailStatusEnum : Swift.Equatable {}
+extension LogicalInkSDK.LIEmailStatusEnum : Swift.Hashable {}
+extension LogicalInkSDK.LIEmailStatusEnum : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIVisitFormDetail.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIVisitFormDetail.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIVisitFormDetail.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIServerInfo.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIServerInfo.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIServerInfo.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LILanguageModel.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LILanguageModel.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LILanguageModel.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LILocation.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LILocation.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LILocation.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LISearchBy.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LISearchBy.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LISearchBy.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIUser.SearchType : Swift.Equatable {}
+extension LogicalInkSDK.LIUser.SearchType : Swift.Hashable {}
+extension LogicalInkSDK.LIUser.SearchType : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIUser.FormStatusType : Swift.Equatable {}
+extension LogicalInkSDK.LIUser.FormStatusType : Swift.Hashable {}
+extension LogicalInkSDK.LIUser.FormStatusType : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIUser.EmailStatusType : Swift.Equatable {}
+extension LogicalInkSDK.LIUser.EmailStatusType : Swift.Hashable {}
+extension LogicalInkSDK.LIUser.EmailStatusType : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIUser.FilterOperatorType : Swift.Equatable {}
+extension LogicalInkSDK.LIUser.FilterOperatorType : Swift.Hashable {}
+extension LogicalInkSDK.LIUser.FilterOperatorType : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIUser.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIUser.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIUser.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIPatient.FormStatus : Swift.Equatable {}
+extension LogicalInkSDK.LIPatient.FormStatus : Swift.Hashable {}
+extension LogicalInkSDK.LIPatient.FormStatus : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIPatient.PatientEmailStatus : Swift.Equatable {}
+extension LogicalInkSDK.LIPatient.PatientEmailStatus : Swift.Hashable {}
+extension LogicalInkSDK.LIPatient.PatientEmailStatus : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIPatient.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIPatient.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIPatient.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIVisit.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIVisit.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIVisit.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIOrder.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIOrder.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIOrder.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIVisitPatientDetail.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIVisitPatientDetail.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIVisitPatientDetail.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LITextAttributes.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LITextAttributes.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LITextAttributes.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIUrlDict.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIUrlDict.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIUrlDict.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIUrlLaunchParsedObject.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIUrlLaunchParsedObject.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIUrlLaunchParsedObject.CodingKeys : Swift.RawRepresentable {}
+extension LogicalInkSDK.LIEmailObject.CodingKeys : Swift.Equatable {}
+extension LogicalInkSDK.LIEmailObject.CodingKeys : Swift.Hashable {}
+extension LogicalInkSDK.LIEmailObject.CodingKeys : Swift.RawRepresentable {}

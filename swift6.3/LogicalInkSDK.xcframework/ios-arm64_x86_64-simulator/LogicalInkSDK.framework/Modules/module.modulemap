@@ -1,0 +1,10 @@
+framework module LogicalInkSDK {
+  umbrella header "LogicalInkSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module LogicalInkSDK.Swift {
+  header "LogicalInkSDK-Swift.h"
+}
